@@ -1,34 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // pages
 import SignIn from './pages/signin';
 import SignUp from './pages/sign-up';
 import { routes } from './route/dashboard-route';
-import { lazy } from 'react';
-import Home from './pages/home';
+import { Suspense, lazy } from 'react';
+import Dashboard from './pages/dashboard';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 
 function App() {
   return (
-    <Router>
-      <Routes>
-      <Route exact path="/" Component={<Home />} />
+    <Routes>
       <Route path="/auth/signin" element={<SignIn />} />
       <Route path="/auth/signup" element={<SignUp />} />
-      <Route path='/' element={<DashboardLayout />}>
+      <Route element={<DashboardLayout />}>
+      <Route index element={<Dashboard />} />
         {routes.map(function (route, index) {
           const { path, page: Component } = route;
-          return <Route key={index} path={route.path} element={route.page} />
+          return (<Route
+            key={index}
+            path={path}
+            element={
+              <Suspense fallback={<SignIn />}>
+                <Component />
+              </Suspense>
+            } />)
         })}
       </Route>
-      {/* <div className="App bg-black h-screen w-screen text-center text-xl text-[#61dafb]">
-      <header className="App-header"> */}
-      {/* </header> */}
-      {/* </div> */}
-      </Routes>
-    </Router>
+    </Routes>
   );
 }
 
