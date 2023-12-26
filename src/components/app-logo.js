@@ -3,13 +3,13 @@ import logo from '../logo.svg';
 
 function AppLogo() {
     return (
-        <div className="border-b-2 border-yellow-500 text-start font-bold text-4xl mb-8">
-            <span className="inline-flex flex-row">
-                <img className="h-[40px]" src={logo} alt='Logo' />
+        <div className="text-start font-bold text-[1.12rem] mb-8 mt-7 font-sans">
+            <span className="inline-flex flex-row items-center justify-center">
+                <img className="h-[1.22rem]" src={logo} alt='Logo' />
                 <h2>Home</h2>
             </span>
         </div>
     )
 }
 
-export default AppLogo
+export default AppLogo;

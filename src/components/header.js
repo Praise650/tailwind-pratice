@@ -7,8 +7,8 @@ function Header() {
     return (
         <div className='static '>
             <div className="w-full flex flex-row justify-between items-center bg-red-400 p-6">
-                <div className='inline-flex h-fit'>
-                    <div className='sm:hidden'><MenuButton /></div> <img className="h-[40px]" src={logo} alt='Logo' />
+                <div className='inline-flex h-fit lg:hidden'>
+                    <MenuButton /> <img className="h-[40px]" src={logo} alt='Logo' />
                 </div>
                 <nav className="flex flex-row justify-between gap-4">
                     <ul className="flex flex-row gap-4">

@@ -5,6 +5,7 @@ import About from "../pages/about";
 import Settings from "../pages/settings";
 import Contacts from "../pages/contacts";
 import { lazy } from "react";
+import Blog from "../pages/blog";
 
 const Dashboard = lazy(() => import('../pages/dashboard'));
 const Pagination = lazy(() => import('../pages/pagination'));
@@ -20,10 +21,11 @@ class DashboardRoute {
 const dashboardRoutes = [
     new DashboardRoute(Dashboard, '/dashboard', 'Dashboard'),
     new DashboardRoute(Product, '/products', 'Products'),
-    new DashboardRoute(Pagination, '/pagination','Pagination'),
+    new DashboardRoute(Pagination, '/pagination','Users'),
+    new DashboardRoute(Blog, '/blogs','Blogs '),
     new DashboardRoute(About, '/about', 'About'),
-    new DashboardRoute(Settings, '/settings', 'Settings'),
     new DashboardRoute(Contacts, '/contacts','Contacts'),
+    new DashboardRoute(Settings, '/settings', 'Settings'),
 ];
 
 const routes = [...dashboardRoutes];
