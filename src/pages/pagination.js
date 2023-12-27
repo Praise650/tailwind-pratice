@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { apiService } from '../service/api-service';
+import ProfileImage from '../components/ProfileImage';
 
 function Pagination() {
   const pageLimit = 2;
@@ -15,7 +16,7 @@ function Pagination() {
       const resData = await apiService.retrieveData('/users');
       const startIndex = page * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      let users = resData.splice(startIndex, endIndex);
+      const users = resData.splice(startIndex, endIndex);
       console.log(users);
       setList(users);
     } catch (error) {
@@ -40,21 +41,31 @@ function Pagination() {
   }
   return (
     <main>
-      <div>Pagination</div>
+      <div>Users</div>
 
-      <div className='h-fit  grid grid-cols-2 gap-3 justify-center items-center text-black m-3'>
+      {/* <div className='h-fit  grid grid-cols-2 gap-3 justify-center items-center text-black m-3'> */}
+      <div className='h-fit flex flex-col justify-center items-center text-black my-5'>
         {
           list.map(
             function (item, index) {
-              return <div id="card" class="w-fit h-fit text-black bg-white my-5 p-3 rounded-sm shadow-md">
-                <span id="card-title" class="uppercase font-bold">ID: {item.id}</span><br />
-                <span id="card-title" class="uppercase font-bold">Name: {item.name}</span>
-                <p id="card-body" class="font-normal text-blue-200">Username: {item.username}</p>
-                <div>
-                  <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p>
-                  <p id="card-body" class="font-normal text-blue-200">Website: <a href={item.website}>{item.website}</a></p>
+              return <div id="listtile" class="w-full h-fit text-black bg-white py-1 border-t-2 flex justify-between items-center">
+                {/* <span id="leading" class="uppercase font-bold ">{item.id}</span> */}
+                {/* leading */}
+                <div id='leading' className='inline-flex items-center gap-3 flex-wrap w-3/12'>
+                  <ProfileImage height={20} width={20} />
+                  <div id='body' className='inline-block'>
+                    <span id="title" class="uppercase font-medium">Name: {item.name}</span>
+                    <p id="subtitle" class="font-normal text-blue-200">Username: {item.username}</p>
+                  </div>
                 </div>
-                <button className='border-b-2 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button>
+                {/* leading */}
+                <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p>
+                {/* trailing */}
+                <div id='trailing' className='inline-flex gap-2'>
+                  <p class="font-normal text-blue-200">Website: <a href={item.website}>{item.website}</a></p>
+                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button>
+                </div>
+                {/* trailing */}
               </div>
             }
           )}
