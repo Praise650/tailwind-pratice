@@ -4,7 +4,7 @@ import ProfileImage from '../components/ProfileImage';
 
 function Pagination() {
   const pageLimit = 2;
-  const itemsPerPage = 5
+  const itemsPerPage = 10
   let currentPage = 0;
   const [list, setList] = useState([]);
   useEffect(() => {
@@ -41,29 +41,33 @@ function Pagination() {
   }
   return (
     <main>
-      <div>Users</div>
+      <h1 className='text-2xl font-bold'>Users</h1>
 
       {/* <div className='h-fit  grid grid-cols-2 gap-3 justify-center items-center text-black m-3'> */}
       <div className='h-fit flex flex-col justify-center items-center text-black my-5'>
         {
           list.map(
             function (item, index) {
-              return <div id="listtile" class="w-full h-fit text-black bg-white py-1 border-t-2 flex justify-between items-center">
-                {/* <span id="leading" class="uppercase font-bold ">{item.id}</span> */}
+              return <div id="listtile" class="w-full h-fit text-black bg-white py-1 border-t-2 flex flex-shrink-1 basis-1 flex-grow-0 justify-between items-center">
                 {/* leading */}
-                <div id='leading' className='inline-flex items-center gap-3 flex-wrap w-3/12'>
+                <div id='leading' className='inline-flex items-center gap-3 flex-wrap w-[30%] max-sm:w-fit'>
                   <ProfileImage height={20} width={20} />
-                  <div id='body' className='inline-block'>
-                    <span id="title" class="uppercase font-medium">Name: {item.name}</span>
-                    <p id="subtitle" class="font-normal text-blue-200">Username: {item.username}</p>
+                  <div className='inline-flex flex-col'>
+                    <span id="title" class="uppercase font-bold text-wrap">{item.name}</span>
+                    <span>Username: <span id="subtitle" class="font-semibold">{item.username}</span></span>
                   </div>
                 </div>
                 {/* leading */}
-                <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p>
+                <div id="body" className='w-[30%] font-normal text-blue-200 max-sm:hidden'>
+                  <p>Phone: {item.phone}</p>
+                  <p>{item.email}</p>
+                </div>
                 {/* trailing */}
-                <div id='trailing' className='inline-flex gap-2'>
-                  <p class="font-normal text-blue-200">Website: <a href={item.website}>{item.website}</a></p>
-                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button>
+                <div id='trailing' className='inline-flex justify-end gap-5 text-white w-[40%]'>
+                  {/* <span>Website:</span> */}
+                  <p class="font-normal text-blue-300 border-b-[1px] max-sm:hidden"> <a href={item.website}>{item.website}</a></p>
+                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-end' onClick={() => viewMore(item)}>view more</button>
+                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-end' onClick={() => viewMore(item)}>follow</button>
                 </div>
                 {/* trailing */}
               </div>

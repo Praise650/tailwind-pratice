@@ -39,10 +39,32 @@ function Blog() {
         fetchData(currentPage);
     }
 
+    const interest = [
+        'HEADLINES_NEWS',
+        'GENERAL_NEWS',
+        'BUSINESS_NEWS',
+        'SPORTS_NEWS',
+        'ENTERTAINMENT_NEWS',
+        'TECHNOLOGY_NEWS',
+        'SEARCH_NEW']
+
     return (
         <main>
-            <div>Blogs</div>
-            <div className='h-fit justify-center items-center text-black m-3'>
+            <div id='header' className='flex justify-between'>
+                <h1 className='text-2xl font-bold'>Blogs</h1>
+                {/* interest */}
+                <div className='border-2 px-2 rounded-sm bg-blue-50 flex items-center'>
+                    <label for="cars">Interest: </label>
+
+                    <select name="cars" id="cars" className='outline-none bg-transparent'>
+                        {interest.map((item,index) => {
+                        return <option value={item}>{item}</option>})
+                        }
+                    </select>
+                </div>
+                {/* interest */}
+            </div>
+            <div className='h-fit text-black m-3'>
                 {
                     list.map(
                         function (item, index) {

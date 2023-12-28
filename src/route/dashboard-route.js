@@ -8,7 +8,7 @@ import { lazy } from "react";
 import Blog from "../pages/blog";
 
 const Dashboard = lazy(() => import('../pages/dashboard'));
-const Pagination = lazy(() => import('../pages/pagination'));
+const Users = lazy(() => import('../pages/Users'));
 
 class DashboardRoute {
     constructor(page, path, title) {
@@ -21,7 +21,7 @@ class DashboardRoute {
 const dashboardRoutes = [
     new DashboardRoute(Dashboard, '/dashboard', 'Dashboard'),
     new DashboardRoute(Product, '/products', 'Products'),
-    new DashboardRoute(Pagination, '/pagination','Users'),
+    new DashboardRoute(Users, '/pagination','Users'),
     new DashboardRoute(Blog, '/blogs','Blogs '),
     new DashboardRoute(About, '/about', 'About'),
     new DashboardRoute(Contacts, '/contacts','Contacts'),
