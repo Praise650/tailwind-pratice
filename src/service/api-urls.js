@@ -1,15 +1,17 @@
 // apis 
 const API_KEY = "YOUR_API_KEY";
-const HEADLINES_NEWS = "https://newsapi.org/v2/top-headlines?country=in&apiKey=";
-const GENERAL_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=";
-const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=";
-const SPORTS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=";
-const ENTERTAINMENT_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=";
-const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=8&apiKey=";
-const SEARCH_NEWS = "https://newsapi.org/v2/everything?q=";
+const BASEURL = "https://newsapi.org/v2";
+const HEADLINES_NEWS = "/top-headlines?country=in&apiKey=";
+const GENERAL_NEWS = "/top-headlines?country=in&category=general&apiKey=";
+const BUSINESS_NEWS = "/top-headlines?country=in&category=business&apiKey=";
+const SPORTS_NEWS = "/top-headlines?country=in&category=sports&apiKey=";
+const ENTERTAINMENT_NEWS = "/top-headlines?country=in&category=entertainment&apiKey=";
+const TECHNOLOGY_NEWS = "/top-headlines?country=in&category=technology&pageSize=8&apiKey=";
+const SEARCH_NEWS = "/everything?q=";
 
 const ApiUrls = {
     apiKey: API_KEY,
+    baseUrl:BASEURL,
     headlineNews: HEADLINES_NEWS,
     generalNews: GENERAL_NEWS,
     businessNews: BUSINESS_NEWS,

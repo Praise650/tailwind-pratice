@@ -1,7 +1,9 @@
-class UserApiService {
+import { apiUrls } from "./api-urls";
+
+class NewsApiService {
     constructor(url) {
         // this.url = url;
-        this.baseUrl = 'https://jsonplaceholder.typicode.com';
+        this.baseUrl = apiUrls.baseUrl;
     };
 
     // static setEndpoint(endpoint) {
@@ -9,7 +11,7 @@ class UserApiService {
     // }
 
     async postData() { }
-    async retrieveData(endpoint) {
+    async retrieveNews(endpoint) {
         const response = await fetch(this.baseUrl + endpoint, {
             method: 'GET',
             headers: {
@@ -22,6 +24,6 @@ class UserApiService {
     updateData() { }
 }
 
-var apiService = new UserApiService();
+let newsApiService = new NewsApiService();
 
-export { apiService }
+export { newsApiService }

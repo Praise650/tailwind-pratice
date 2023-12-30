@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { apiService } from '../service/api-service';
+import { newsApiService as nService } from '../service/news-api-service';
 
 function Blog() {
+    const [selectedInterest, setInterest] = useState('');
+    const [list, setList] = useState([]);
     const pageLimit = 10;
     const itemsPerPage = 1;
     let currentPage = 0;
-    const [list, setList] = useState([]);
+    
     useEffect(() => {
         fetchData(currentPage);
     }, [currentPage]);
 
     const fetchData = async (page) => {
+        // var foundarray = interest.filter(e => e.hasOwnProperty("key2"))
         try {
-            const resData = await apiService.retrieveData('/posts');
+            const resData = await nService.retrieveNews('/posts');
             const startIndex = page * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
             let users = resData.splice(startIndex, endIndex);
@@ -27,6 +30,7 @@ function Blog() {
     function viewMore(item) {
         console.log("View More")
         console.log(item);
+        console.log(selectedInterest);
     }
 
     function next() {
@@ -39,14 +43,18 @@ function Blog() {
         fetchData(currentPage);
     }
 
-    const interest = [
-        'HEADLINES_NEWS',
-        'GENERAL_NEWS',
-        'BUSINESS_NEWS',
-        'SPORTS_NEWS',
-        'ENTERTAINMENT_NEWS',
-        'TECHNOLOGY_NEWS',
-        'SEARCH_NEW']
+        const interest = [
+            'HEADLINES_NEWS',
+            'GENERAL_NEWS',
+            'BUSINESS_NEWS',
+            'SPORTS_NEWS',
+            'ENTERTAINMENT_NEWS',
+            'TECHNOLOGY_NEWS',
+            'SEARCH_NEW']
+
+        function handleInterestChange (e){
+            setInterest(e.target.value);
+        }
 
     return (
         <main>
@@ -56,9 +64,10 @@ function Blog() {
                 <div className='border-2 px-2 rounded-sm bg-blue-50 flex items-center'>
                     <label for="cars">Interest: </label>
 
-                    <select name="cars" id="cars" className='outline-none bg-transparent'>
-                        {interest.map((item,index) => {
-                        return <option value={item}>{item}</option>})
+                    <select name="interest" id="interest" onChange={handleInterestChange} className='outline-none bg-transparent'>
+                        {interest.map((item, index) => {
+                            return <option value={item}>{item}</option>
+                        })
                         }
                     </select>
                 </div>
