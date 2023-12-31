@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { newsApiService as nService } from '../service/news-api-service';
+import { apiUrls } from '../service/api-urls';
 
 function Blog() {
     const [selectedInterest, setInterest] = useState('');
     const [list, setList] = useState([]);
-    const pageLimit = 10;
-    const itemsPerPage = 1;
+    const pageLimit = 2;
+    const itemsPerPage = 6;
     let currentPage = 0;
-    
+
     useEffect(() => {
         fetchData(currentPage);
     }, [currentPage]);
@@ -15,10 +16,10 @@ function Blog() {
     const fetchData = async (page) => {
         // var foundarray = interest.filter(e => e.hasOwnProperty("key2"))
         try {
-            const resData = await nService.retrieveNews('/posts');
+            const resData = await nService.retrieveNews(apiUrls.generalNews);
             const startIndex = page * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
-            let users = resData.splice(startIndex, endIndex);
+            let users = resData.articles.splice(startIndex, endIndex);
             console.log(users);
             setList(users);
         } catch (error) {
@@ -43,18 +44,18 @@ function Blog() {
         fetchData(currentPage);
     }
 
-        const interest = [
-            'HEADLINES_NEWS',
-            'GENERAL_NEWS',
-            'BUSINESS_NEWS',
-            'SPORTS_NEWS',
-            'ENTERTAINMENT_NEWS',
-            'TECHNOLOGY_NEWS',
-            'SEARCH_NEW']
+    const interest = [
+        'HEADLINES_NEWS',
+        'GENERAL_NEWS',
+        'BUSINESS_NEWS',
+        'SPORTS_NEWS',
+        'ENTERTAINMENT_NEWS',
+        'TECHNOLOGY_NEWS',
+        'SEARCH_NEW']
 
-        function handleInterestChange (e){
-            setInterest(e.target.value);
-        }
+    function handleInterestChange(e) {
+        setInterest(e.target.value);
+    }
 
     return (
         <main>
@@ -73,19 +74,23 @@ function Blog() {
                 </div>
                 {/* interest */}
             </div>
-            <div className='h-fit text-black m-3'>
+            <div className='h-fit text-black m-3 bg-black grid grid-cols-3 gap-3'>
                 {
                     list.map(
                         function (item, index) {
                             return <div id="card" class="w-fit h-fit text-black bg-white my-5 p-3">
-                                <span id="card-title" class="uppercase font-bold">ID: {item.id}</span><br />
+                                <img src={item.urlToImage} />
+                                <span>{item.publishedAt}</span><br/>
+                                <span id="card-title" class="uppercase font-bold">{item.author}</span><br />
                                 <span id="card-title" class="uppercase font-bold text-center">{item.title}</span>
-                                <p id="card-body" class="font-normal text-blue-200">Username: {item.body}</p>
+                                <p id="card-body" class="font-normal text-blue-200">{item.description}</p>
                                 <div>
-                                    <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p>
-                                    <p id="card-body" class="font-normal text-blue-200">Website: <a href={item.website}>{item.website}</a></p>
+                                    {/* <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p> */}
                                 </div>
-                                <button className='border-b-2 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button>
+                                <a id="card-body" class="font-normal text-blue-200 border-b-2" href={item.url}>
+                                        view more
+                                    </a>
+                                {/* <button className='border-b-2 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button> */}
                             </div>
                         }
                     )}

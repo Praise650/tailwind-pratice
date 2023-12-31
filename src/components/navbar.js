@@ -17,8 +17,8 @@ function Navbar() {
                     {routes.map((item, index) => {
                         return <Link to={item.path} className="text-white w-[100%] py-2 px-2 text-start font-[0.6875rem] hover:bg-[#A97DF3]">
                             <div >
-                            <FontAwesomeIcon icon="check-square" />
-                            <FontAwesomeIcon icon={['fab', 'apple']} />
+                            {/* <FontAwesomeIcon icon="check-square" />
+                            <FontAwesomeIcon icon={['fab', 'apple']} /> */}
                                 {item.title}
                             </div>
                         </Link>

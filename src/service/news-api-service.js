@@ -2,21 +2,17 @@ import { apiUrls } from "./api-urls";
 
 class NewsApiService {
     constructor(url) {
-        // this.url = url;
         this.baseUrl = apiUrls.baseUrl;
+        this.apiKey = apiUrls.apiKey;
     };
-
-    // static setEndpoint(endpoint) {
-    //     this.url = endpoint;
-    // }
 
     async postData() { }
     async retrieveNews(endpoint) {
-        const response = await fetch(this.baseUrl + endpoint, {
+        const response = await fetch(this.baseUrl + endpoint + this.apiKey, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // }
         },);
         return await response.json();
     }

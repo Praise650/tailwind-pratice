@@ -1,5 +1,5 @@
 // apis 
-const API_KEY = "YOUR_API_KEY";
+const API_KEY = "658460401b864a178bd8ac186927fffd";
 const BASEURL = "https://newsapi.org/v2";
 const HEADLINES_NEWS = "/top-headlines?country=in&apiKey=";
 const GENERAL_NEWS = "/top-headlines?country=in&category=general&apiKey=";
