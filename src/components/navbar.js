@@ -5,7 +5,6 @@ import AppLogo from "./app-logo";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Navbar() {
-    // const items = ['Dashboard', 'Products', 'About', 'Settings', 'Pagination',];
     return (
         <div className="bg-[#4F1DA0] text-white h-screen w-[20.0625rem] border-r-black shadow-md max-lg:hidden">
             <div >
@@ -16,7 +15,7 @@ function Navbar() {
                 <div className="flex flex-col justify-between items-center gap-3 mt-3">
                     {routes.map((item, index) => {
                         return <Link to={item.path} className="text-white w-[100%] py-2 px-2 text-start font-[0.6875rem] hover:bg-[#A97DF3]">
-                            <div >
+                            <div key={item.title} >
                             {/* <FontAwesomeIcon icon="check-square" />
                             <FontAwesomeIcon icon={['fab', 'apple']} /> */}
                                 {item.title}

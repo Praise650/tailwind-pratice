@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { newsApiService as nService } from '../service/news-api-service';
 import { apiUrls } from '../service/api-urls';
+import { Link } from 'react-router-dom';
 
 function Blog() {
     const [selectedInterest, setInterest] = useState('');
@@ -74,22 +75,28 @@ function Blog() {
                 </div>
                 {/* interest */}
             </div>
-            <div className='h-fit text-black m-3 bg-black grid grid-cols-3 gap-3'>
+            <div className='h-fit text-black m-3 grid grid-cols-3 auto-rows-auto gap-3'>
                 {
                     list.map(
                         function (item, index) {
-                            return <div id="card" class="w-fit h-fit text-black bg-white my-5 p-3">
+                            return <div id="card" class="w-fit text-black bg-white shadow-md my-5 p-3">
                                 <img src={item.urlToImage} />
-                                <span>{item.publishedAt}</span><br/>
-                                <span id="card-title" class="uppercase font-bold">{item.author}</span><br />
-                                <span id="card-title" class="uppercase font-bold text-center">{item.title}</span>
-                                <p id="card-body" class="font-normal text-blue-200">{item.description}</p>
-                                <div>
-                                    {/* <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p> */}
+                                <div className='flex flex-col my-2'>
+                                    <span id="card-title" class="uppercase font-bold">
+                                       <span className='font-normal'>Author:</span> {item.author}
+                                    </span>
+                                    <span>
+                                        {new Intl.DateTimeFormat(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(item.publishedAt))}
+                                    </span>
                                 </div>
+                                <span id="card-title" class="uppercase font-medium text-center">{item.title}</span>
+                                <p id="card-body" class="font-normal text-black my-2">{item.description}</p>
+                                <div className='text-right'>
                                 <a id="card-body" class="font-normal text-blue-200 border-b-2" href={item.url}>
                                         view more
                                     </a>
+                                    {/* <p id="card-body" class="font-normal text-blue-200">Phone: {item.phone}</p> */}
+                                </div>
                                 {/* <button className='border-b-2 font-normal text-blue-200 text-end' onClick={() => viewMore(item)}>view more</button> */}
                             </div>
                         }
