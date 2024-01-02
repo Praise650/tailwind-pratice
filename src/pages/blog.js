@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { newsApiService as nService } from '../service/news-api-service';
 import { apiUrls } from '../service/api-urls';
-import { Link } from 'react-router-dom';
 
 function Blog() {
     const [selectedInterest, setInterest] = useState('');
@@ -29,11 +28,11 @@ function Blog() {
         }
     };
 
-    function viewMore(item) {
-        console.log("View More")
-        console.log(item);
-        console.log(selectedInterest);
-    }
+    // function viewMore(item) {
+    //     console.log("View More")
+    //     console.log(item);
+    //     console.log(selectedInterest);
+    // }
 
     function next() {
         currentPage++;
@@ -75,15 +74,15 @@ function Blog() {
                 </div>
                 {/* interest */}
             </div>
-            <div className='h-fit text-black m-3 grid grid-cols-3 auto-rows-auto gap-3'>
+            <div className='h-fit text-black m-3 grid grid-cols-3 auto-rows-auto gap-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
                 {
                     list.map(
                         function (item, index) {
                             return <div id="card" class="w-fit text-black bg-white shadow-md my-5 p-3">
-                                <img src={item.urlToImage} />
+                                <img src={item.urlToImage??'https://placehold.co/600x400/png'} alt='' />
                                 <div className='flex flex-col my-2'>
                                     <span id="card-title" class="uppercase font-bold">
-                                       <span className='font-normal'>Author:</span> {item.author}
+                                       <span className='font-normal'>Author:</span> {item.author??'Anonymous'}
                                     </span>
                                     <span>
                                         {new Intl.DateTimeFormat(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(item.publishedAt))}
