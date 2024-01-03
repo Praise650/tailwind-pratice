@@ -24,7 +24,7 @@ function ProfileComponent() {
             <div className={`absolute bg-white shadow-xl top-0 right-0 px-5 w-52 ${!dropdown && 'hidden'} overflow-y-hidden`}>
                     <div className="flex flex-col justify-between items-center gap-3 mt-3">
                         {items.map((item, index) => {
-                            return <Link to={item.path} className="text-blue-600 w-[100%] py-2 px-6 text-start font-[0.6875rem] hover:bg-[#A97DF3] hover:text-white">
+                            return <Link to={item.path} className="text-black w-[100%] py-2 px-6 text-start font-[0.6875rem] hover:bg-[#A97DF3] hover:text-white">
                                 <div key={item.title} >
                                     {item.title}
                                 </div>

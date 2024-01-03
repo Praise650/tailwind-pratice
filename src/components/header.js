@@ -12,7 +12,7 @@ function Header({ open, setAction }) {
         <header>
             {/* <div className='static '> */}
             <div className="w-full flex flex-row justify-between items-center bg-[#4F1DA0] text-white">
-                <div className='inline-flex h-fit lg:hidden bg-green-300'>
+                <div className='inline-flex h-fit lg:hidden'>
                     <div className={`${open && 'hidden'}`}>
                         <MenuButton open={open} setAction={setAction} />
                     </div>
