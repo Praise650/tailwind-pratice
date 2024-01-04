@@ -7,6 +7,10 @@ import { routes } from './route/dashboard-route';
 import { Suspense, lazy } from 'react';
 import Dashboard from './pages/dashboard';
 
+
+// components
+import Loader from './components/widgets/loader';
+
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 
@@ -23,7 +27,7 @@ function App() {
             key={index}
             path={path}
             element={
-              <Suspense fallback={<SignIn />}>
+              <Suspense fallback={<Loader />}>
                 <Component />
               </Suspense>
             } />)
