@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../logo.svg';
-import search from '../search.svg';
-import notif from '../notif.svg';
+import logo from '../assets/svgs/logo.svg';
+import search from '../assets/svgs/search.svg';
+import notif from '../assets/svgs/notif.svg';
 import MenuButton from './buttons/menu-button';
 import ProfileComponent from './ProfileComponent';
 

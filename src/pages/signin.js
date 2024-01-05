@@ -1,13 +1,15 @@
-import React from 'react'
-import '../css/auth-body.css';
+import React,{ useState } from 'react'
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from '../firebase';
 import { useNavigate } from "react-router-dom";
 import Loader from '../components/widgets/loader';
-import { useState } from 'react';
 
 function SignIn() {
-    <div>SignIn</div>
+//   aProps = {
+//     name: 'email',
+//     type: 'text',
+//     placeholder: 'Enter email'
+// };
     
     let navigate = useNavigate();
     const [loading, setLoading] = useState(false);
