@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } f
 import { auth } from '../firebase';
 
 class CurrentUser {
-    constructor(email,username,imageUrl,uid){
+    constructor(email, username, imageUrl, uid) {
         this.email = email;
         this.username = username;
         this.imageUrl = imageUrl;
@@ -11,42 +11,51 @@ class CurrentUser {
 }
 
 class AuthService {
-    async sigin() {
+    async sigin(email, password) {
         try {
-            let userCredential = await  signInWithEmailAndPassword(auth, email, password);
+            let userCredential = await signInWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
-            new CurrentUser(user.email, user.displayName, user.photoURL,user.uid);
+            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
             return true;
         } catch (error) {
             alert();
             return false;
         }
     }
-    async signup() {
+    async signup(email, password) {
         try {
-            await createUserWithEmailAndPassword(auth, email, password)
+            let userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            let user = userCredential.user;
+            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
+            return true;
         } catch (error) {
-
+            alert();
+            return false;
         }
     }
 
-    async googleSignin(){
+    async googleSignin() {
         try {
-            await this.googleSignin();   
+            let userCredential = await googleSignin();
+            let user = userCredential.user;
+            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
+            return true;
         } catch (error) {
-            
+            alert();
+            return false;
         }
     }
     async signout() {
         try {
-           await signOut(auth);
+            await signOut(auth);
         } catch (error) {
             alert("Failed to sign out");
         }
-     }
+    }
 }
 
 const currentUser = CurrentUser();
 const authService = AuthService();
 
-export const user = {...currentUser};
+// export const user = {...currentUser};
+export { currentUser, authService }
