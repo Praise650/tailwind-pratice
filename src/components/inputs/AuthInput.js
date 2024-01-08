@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-function AuthInput({ name, type, placeholder }) {
+function AuthInput({ name, type, placeholder, width, outterPadding}) {
     return (
         <label className="">
             <input name={name} 
             type={type ?? 'text'} 
-            className="input rounded-lg flex items-center bg-[#eaeaea] h-12 p-2 " 
+            className={`rounded-lg flex items-center bg-[#eaeaea] h-12 p-2 ${width} ${outterPadding}`} 
             placeholder={placeholder??"Enter email"} />
         </label>
     )

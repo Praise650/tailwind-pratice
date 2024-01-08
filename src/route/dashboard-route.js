@@ -2,7 +2,7 @@
 // import Pagination from "../pages/pagination";
 import Product from "../pages/product";
 import About from "../pages/about";
-import Settings from "../pages/settings";
+import Employees from "../pages/Employees";
 import Contacts from "../pages/contacts";
 import { lazy } from "react";
 import Blog from "../pages/blog";
@@ -27,7 +27,7 @@ const dashboardRoutes = [
     new DashboardRoute(Blog, '/blogs','Blogs '),
     new DashboardRoute(About, '/about', 'About'),
     new DashboardRoute(Contacts, '/contacts','Contacts'),
-    new DashboardRoute(Settings, '/settings', 'Settings'),
+    new DashboardRoute(Employees, '/settings', 'Employees'),
 ];
 
 const routes = [...dashboardRoutes];
