@@ -9,7 +9,7 @@ const ENTERTAINMENT_NEWS = "/top-headlines?country=in&category=entertainment&api
 const TECHNOLOGY_NEWS = "/top-headlines?country=in&category=technology&pageSize=8&apiKey=";
 const SEARCH_NEWS = "/everything?q=";
 
-const EMPLOYEES_BASE_URL = 'https://dummy.restapiexample.com/api/v1';
+const EMPLOYEES_BASE_URL = 'http://dummy.restapiexample.com/api/v1';
 const GET_EMPLOYEES = '/employees';
 const GET_EMPLOYEE = '/employee/1';
 const CREATE_EMPLOYEE = '/create';

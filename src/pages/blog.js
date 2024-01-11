@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { newsApiService as nService } from '../service/news-api-service';
+import { newsApiService as nService } from '../service/news-service';
 import { apiUrls } from '../service/api-urls';
 
 function Blog() {
