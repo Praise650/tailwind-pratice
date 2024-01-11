@@ -27,7 +27,7 @@ const dashboardRoutes = [
     new DashboardRoute(Blog, '/blogs','Blogs '),
     new DashboardRoute(About, '/about', 'About'),
     new DashboardRoute(Contacts, '/contacts','Contacts'),
-    new DashboardRoute(Employees, '/settings', 'Employees'),
+    new DashboardRoute(Employees, '/employees', 'Employees'),
 ];
 
 const routes = [...dashboardRoutes];
