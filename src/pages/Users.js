@@ -50,11 +50,11 @@ function Pagination() {
             function (item, index) {
               return <div id="listtile" class="w-full h-fit text-black bg-white py-1 border-t-2 flex flex-shrink-1 basis-1 flex-grow-0 justify-between items-center">
                 {/* leading */}
-                <div id='leading' className='inline-flex items-center gap-3 flex-wrap w-[30%] max-sm:w-fit'>
+                <div id='leading' className='inline-flex items-center gap-3 flex-wrap whitespace-nowrap w-[30%] max-sm:w-fit'>
                   <ProfileImage height={20} width={20} />
-                  <div className='inline-flex flex-col'>
-                    <span id="title" class="uppercase font-bold text-wrap">{item.name}</span>
-                    <span>Username: <span id="subtitle" class="font-semibold">{item.username}</span></span>
+                  <div className='inline-flex flex-col flex-nowrap'>
+                    <span id="title" className="uppercase font-bold whitespace-nowrap truncate">{item.name}</span>
+                    <span>Username: <span id="subtitle" className="font-semibold uppercase">{item.username}</span></span>
                   </div>
                 </div>
                 {/* leading */}

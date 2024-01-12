@@ -4,9 +4,10 @@ import { apiUrls } from '../service/api-urls';
 import { employeesService } from '../service/employees-service';
 import newUserIcon from '../assets/svgs/add.svg';
 import EmployeeTable from '../components/employees/employee_table';
+import EmployeeCardList from '../components/employees/employees_card_list';
 
 function Employees() {
-
+  const [openModal, setModalState] = useState(false);
   const [selectedInterest, setInterest] = useState('');
   const [list, setList] = useState([]);
   const pageLimit = 2;
@@ -46,11 +47,16 @@ function Employees() {
     currentPage--;
     fetchData(currentPage);
   }
-  const [openModal, setModalState] = useState(false);
+
   return (
     <div>
-      <div className='mb-5'>Employees</div>
+      <h1 className='font-bold text-3xl mb-4'>Employees</h1>
+      <div className='max-md:hidden'>
       <EmployeeTable employeeList={[...list]} />
+        </div>
+        <div className='md:hidden'>
+          <EmployeeCardList employeeList={[...list]} editAction={() => setModalState(!openModal)}/>
+        </div>
 
       {/* fab */}
       <button onClick={() => setModalState(!openModal)}>

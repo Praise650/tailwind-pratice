@@ -14,9 +14,10 @@ function EmployeeTable({ employeeList = [] }) {
           <th className=''>Phone</th>
           {/* </tr> */}
         </thead>
-        <tbody className='w-full max-md:block' >
+        <tbody className='w-full max-md:block max-md:w-screen' >
           {employeeList.map((item, index) => {
-            return <tr key={index} className={`text-center h-16 border-2 my-2 ${index % 2 == 0 ? 'bg-yellow-50' : 'bg-blue-50'} max-md:w-full max-md:block`}>
+            return <tr key={index} className={`text-center h-16 border-2 my-2 ${index % 2 === 0 ? 'bg-yellow-50' : 'bg-blue-50'}`}>
+              {/* // max-md:w-full max-md:block */}
               <td className='text-center md:border-r-2 border-slate-500 max-md:w-full max-md:block'>{item.id + 1}</td>
               <td className='text-center w-fit max-md:w-full max-md:block'>
                 <div className="flex items-center justify-center h-10 w-full">
