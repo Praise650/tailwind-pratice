@@ -54,9 +54,10 @@ function Employees() {
       <div className='max-md:hidden'>
       <EmployeeTable employeeList={[...list]} />
         </div>
-        <div className='md:hidden'>
+        <div className='md:hidden max-sm:hidden'>
           <EmployeeCardList employeeList={[...list]} editAction={() => setModalState(!openModal)}/>
         </div>
+        <div></div>
 
       {/* fab */}
       <button onClick={() => setModalState(!openModal)}>
