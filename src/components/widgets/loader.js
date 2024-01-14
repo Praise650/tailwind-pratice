@@ -1,17 +1,17 @@
-import  '../../css/loader.css'
+import '../../css/loader.css'
 
 const Loader = ({ loading }) => {
   return (
-    <>
-      {!loading ? (
-        <div className="spinner">
-          {/* <span>Loading...</span> */}
-          <div className="half-spinner"></div>
-        </div>
-      ) : (
-        <div className="completed">&#x2713;</div>
-      )}
-    </>
+    <div className=' h-screen flex justify-center items-center'>
+        {!loading ? (
+          <div className="spinner">
+            {/* <span>Loading...</span> */}
+            <div className="half-spinner"></div>
+          </div>
+        ) : (
+          <div className="completed">&#x2713;</div>
+        )}
+    </div>
   );
 }
 
