@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { apiService } from '../service/api-service';
-import ProfileImage from '../components/ProfileImage';
+import AddNewUser from '../components/dialogs/AddNewUser';
+import { assetsService } from '../service/asset_service';
+// import UsersTable from '../components/uis/users/UsersTable';
+import UsersCard from '../components/uis/users/UsersCard';
+import Loader from '../components/widgets/loader';
+import ErrorWidget from '../components/uis/ErrorWidget';
 
-function Pagination() {
+function Users() {
+  const [openModal, setModalState] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const pageLimit = 2;
   const itemsPerPage = 10
   let currentPage = 0;
@@ -12,6 +20,7 @@ function Pagination() {
   }, [currentPage]);
 
   const fetchData = async (page) => {
+    setLoading(true);
     try {
       const resData = await apiService.retrieveData('/users');
       const startIndex = page * itemsPerPage;
@@ -19,16 +28,14 @@ function Pagination() {
       const users = resData.splice(startIndex, endIndex);
       console.log(users);
       setList(users);
+      setLoading(false);
     } catch (error) {
-      alert('Error fetching data:', error);
+      // alert('Error fetching data:', error);
       console.error('Error fetching data:', error);
+      setLoading(false);
+      setError(true);
     }
   };
-
-  function viewMore(item) {
-    console.log("View More")
-    console.log(item);
-  }
 
   function next() {
     currentPage++;
@@ -39,48 +46,38 @@ function Pagination() {
     currentPage--;
     fetchData(currentPage);
   }
+
+  if (loading === true) return <Loader />;
+
+  if (error === true) return <ErrorWidget />
+
+
   return (
     <main>
       <h1 className='text-2xl font-bold'>Users</h1>
-
-      {/* <div className='h-fit  grid grid-cols-2 gap-3 justify-center items-center text-black m-3'> */}
-      <div className='h-fit flex flex-col justify-center items-center text-black my-5'>
-        {
-          list.map(
-            function (item, index) {
-              return <div id="listtile" class="w-full h-fit text-black bg-white py-1 border-t-2 flex flex-shrink-1 basis-1 flex-grow-0 justify-between items-center">
-                {/* leading */}
-                <div id='leading' className='inline-flex items-center gap-3 flex-wrap whitespace-nowrap w-[30%] max-sm:w-fit'>
-                  <ProfileImage height={20} width={20} />
-                  <div className='inline-flex flex-col flex-nowrap'>
-                    <span id="title" className="uppercase font-bold whitespace-nowrap truncate">{item.name}</span>
-                    <span>Username: <span id="subtitle" className="font-semibold uppercase">{item.username}</span></span>
-                  </div>
-                </div>
-                {/* leading */}
-                <div id="body" className='w-[30%] font-normal text-blue-200 max-sm:hidden'>
-                  <p>Phone: {item.phone}</p>
-                  <p>{item.email}</p>
-                </div>
-                {/* trailing */}
-                <div id='trailing' className='inline-flex justify-end gap-5 text-white w-[40%]'>
-                  {/* <span>Website:</span> */}
-                  <p class="font-normal text-blue-300 border-b-[1px] max-sm:hidden"> <a href={item.website}>{item.website}</a></p>
-                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-end' onClick={() => viewMore(item)}>view more</button>
-                  <button className='rounded-lg bg-black px-2 py-1 font-normal text-end' onClick={() => viewMore(item)}>follow</button>
-                </div>
-                {/* trailing */}
-              </div>
-            }
-          )}
+      <div className='grid grid-cols-2 gap-3 max-sm:grid-cols-1 lg:grid-cols-3'>
+        <UsersCard employeeList={[...list]} editAction={() => setModalState(!openModal)} />
       </div>
+      {/* <div className='h-fit flex flex-col justify-center items-center text-black my-5'>
+        <UsersTable employeeList={[...list]} editAction={() => setModalState(!openModal)} />
+      </div> */}
       <ActionButton limit={pageLimit} next={() => next()} prev={() => prev()} />
+      {/* fab */}
+      <button onClick={() => setModalState(!openModal)}>
+        <div className='absolute right-0 bottom-0 rounded-full h-10 w-10 m-10 shadow-2xl bg-blue-400 flex items-center justify-center'>
+          <span className='text-white font-bold text-lg'>
+            <img src={assetsService.add} alt='add new user' />
+          </span>
+        </div>
+      </button>
+      {/* fab */}
+      {openModal && <AddNewUser setOpenModal={setModalState} />}
 
     </main>
   )
 }
 
-export default Pagination;
+export default Users;
 
 
 function ActionButton({ limit, prev, next }) {

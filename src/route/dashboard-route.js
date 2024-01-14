@@ -1,11 +1,11 @@
 // import Dashboard from "../pages/dashboard";
 // import Pagination from "../pages/pagination";
 import Product from "../pages/product";
-import About from "../pages/about";
+import About from "../pages/About";
 import Employees from "../pages/Employees";
-import Contacts from "../pages/contacts";
+import Contacts from "../pages/Contacts";
 import { lazy } from "react";
-import Blog from "../pages/blog";
+import Blog from "../pages/Blog";
 
 
 
