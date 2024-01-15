@@ -12,14 +12,21 @@ class CurrentUser {
 
 class AuthService {
     async sigin(email, password) {
+        const resVal = {isSuccess:false,failed:''};
         try {
             let userCredential = await signInWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
-            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
-            return true;
+            const newUser = new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
+            console.log(newUser);
+            resVal.isSuccess = true;
+            resVal.failed = '';
+            return resVal;
         } catch (error) {
-            alert();
-            return false;
+            // alert(error);
+            // console.log(error);
+            resVal.isSuccess = false;
+            resVal.failed = error;
+            return resVal;
         }
     }
     async signup(email, password) {
@@ -34,17 +41,17 @@ class AuthService {
         }
     }
 
-    async googleSignin() {
-        try {
-            let userCredential = await googleSignin();
-            let user = userCredential.user;
-            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
-            return true;
-        } catch (error) {
-            alert();
-            return false;
-        }
-    }
+    // async googleSignin() {
+    //     try {
+    //         let userCredential = await (googleSignin);
+    //         let user = userCredential.user;
+    //         new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
+    //         return true;
+    //     } catch (error) {
+    //         alert();
+    //         return false;
+    //     }
+    // }
     async signout() {
         try {
             await signOut(auth);
@@ -54,8 +61,8 @@ class AuthService {
     }
 }
 
-const currentUser = CurrentUser();
-const authService = AuthService();
+const currentUser = new CurrentUser();
+const authService = new AuthService();
 
 // export const user = {...currentUser};
 export { currentUser, authService }
