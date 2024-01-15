@@ -3,6 +3,7 @@ import { newsApiService as nService } from '../service/news-service';
 import { apiUrls } from '../service/api-urls';
 import Loader from '../components/widgets/loader';
 import ErrorWidget from '../components/uis/ErrorWidget';
+import { useLocation } from 'react-router-dom';
 
 function Blog() {
     const [loading, setLoading] = useState(false);
@@ -36,12 +37,6 @@ function Blog() {
         }
     };
 
-    // function viewMore(item) {
-    //     console.log("View More")
-    //     console.log(item);
-    //     console.log(selectedInterest);
-    // }
-
     function next() {
         currentPage++;
         fetchData(currentPage);
@@ -67,17 +62,17 @@ function Blog() {
 
     if (loading === true) return <Loader />;
 
-    if (error === true) return <ErrorWidget />
+    if (error === true) return <ErrorWidget refresh={()=>fetchData()} />
 
     return (
         <main>
-            <div id='header' className='flex justify-between'>
-                <h1 className='font-bold text-3xl mb-4'>Blogs</h1>
+            <div id='header' className='flex justify-between mb-4 gap-6 w-full'>
+                <h1 className='font-bold text-3xl'>Blogs</h1>
                 {/* interest */}
-                <div className='border-2 px-2 rounded-sm bg-blue-50 flex items-center'>
-                    <label for="cars">Interest: </label>
+                <div className='border-2 px-2 rounded-sm bg-blue-50 flex items-center max-sm:w-fit'>
+                    <label for="interest" className='max-sm:hidden'>Interest: </label>
 
-                    <select name="interest" id="interest" onChange={handleInterestChange} className='outline-none bg-transparent'>
+                    <select name="interest" id="interest" onChange={handleInterestChange} className='outline-none bg-transparent max-sm:text-xs'>
                         {interest.map((item, index) => {
                             return <option value={item}>{item}</option>
                         })
@@ -86,7 +81,7 @@ function Blog() {
                 </div>
                 {/* interest */}
             </div>
-            <div className='h-fit text-black m-3 grid grid-cols-3 auto-rows-auto gap-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
+            <div className='h-fit text-black grid grid-cols-3 auto-rows-auto gap-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
                 {
                     list.map(
                         function (item, index) {
