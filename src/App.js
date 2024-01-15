@@ -17,10 +17,10 @@ const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 function App() {
   return (
     <Routes>
-      <Route path="/auth/signin" element={<SignIn />} />
+      <Route index element={<SignIn />} />
       <Route path="/auth/signup" element={<SignUp />} />
       <Route element={<DashboardLayout />}>
-      <Route index element={<Dashboard />} />
+      <Route path='/dashboard' element={<Dashboard />} />
         {routes.map(function (route, index) {
           const { path, page: Component } = route;
           return (<Route

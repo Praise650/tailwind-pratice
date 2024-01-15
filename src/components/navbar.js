@@ -8,8 +8,11 @@ import MenuButton from "./buttons/menu-button";
 function Navbar({ open, setSidebar }) {
     return (
         <div
-            className={`absolute left-0 top-0 z-9999 h-screen w-72.5 overflow-y-hidden bg-[#4F1DA0] duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'
-                }`}
+            className={`absolute left-0 top-0 
+            z-50 h-screen w-72.5 overflow-y-hidden 
+            bg-[#4F1DA0] duration-300 ease-linear 
+            dark:bg-boxdark lg:static lg:translate-x-0 
+            ${open ? 'translate-x-0' : '-translate-x-full'}`}
         // className={`
         // bg-[#4F1DA0]
         // text-white 
