@@ -1,6 +1,5 @@
 // import Dashboard from "../pages/dashboard";
 // import Pagination from "../pages/pagination";
-import Product from "../pages/product";
 import About from "../pages/About";
 import Employees from "../pages/Employees";
 import Contacts from "../pages/Contacts";
@@ -11,6 +10,7 @@ import Blog from "../pages/Blog";
 
 const Dashboard = lazy(() => import('../pages/dashboard'));
 const Users = lazy(() => import('../pages/Users'));
+const Product = lazy(()=> import("../pages/product"));
 
 class DashboardRoute {
     constructor(page, path, title) {

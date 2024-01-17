@@ -48,22 +48,20 @@ function SignIn() {
                 <AuthLeftSide />
             </div>
             {/* left */}
-            <div className='bg-white px-11 py-10 w-full flex flex-col'>
-                <div className='bg-green-400 text-center'>css color seperator</div>
-                <div className='bg-lime-100 flex flex-col mt-12 items-center'>
+            <div className='bg-gray-600 w-screen h-screen flex-1'>
+                <div className='px-11 py-10 truncate'>
+                    Hello iits
+                </div>
+            </div>
+            {/* <div className='bg-white px-11 py-10 w-full flex flex-col justify-between'>
+                <div className='bg-green-400 text-center truncate'>css color seperator</div>
+                <div className='bg-lime-100 flex flex-col items-center'>
                     <div className='bg-blue-100 rounded-lg w-fit px-4 py-2'>
                         <h1 className='text-black font-bold text-2xl mb-12 text-start'>Let's get started</h1>
                         <form onSubmit={(e) => handleSignUp(e)}>
                             <div className='grid grid-cols-2 gap-4 max-md:grid-cols-1'>
-                                <AuthInput name='firstname' placeholder="Bend" labelText='First name' />
-                                <AuthInput name='lastname' placeholder="Dover" labelText='Last name' />
                                 <div className='col-span-2 max-md:grid-cols-1'>
                                     <AuthInput name='email' placeholder="jondoe@gmail.com" labelText='Email' width='w-full' />
-                                </div>
-                                <AuthInput name='country' placeholder="Nigeria" labelText='Country of residence' />
-                                <AuthInput name='state' placeholder="Lagos state" labelText='State' />
-                                <div className='col-span-2'>
-                                    <AuthInput name='phone' placeholder="+234 814 260 2528" labelText='Phone number' width='w-full' />
                                 </div>
                                 <div className='col-span-2'>
                                     <AuthInput name='password' placeholder="*******" type="password" labelText='Password' width='w-full' />
@@ -72,18 +70,19 @@ function SignIn() {
                                     <button className="text-white rounded-lg bg-blue-500 text-center py-3 w-full" type="submit">Get Started</button>
                                 </div>
                                 <div className='col-span-2 text-center w-full'>
-                                <button 
-                                    className='underline'
-                                    onClick={() => { 
-                                        navigate('/dashboard') 
-                                    }}
-                                    >Already a Member? SignIn</button>
+                                    <button
+                                        className='underline'
+                                        onClick={() => {
+                                            navigate('/auth/signup')
+                                        }}
+                                    >New here? SignUp</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
+                <div></div>
+            </div> */}
         </div>
     );
 
