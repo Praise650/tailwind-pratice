@@ -13,31 +13,23 @@ function Navbar({ open, setSidebar }) {
             bg-[#4F1DA0] duration-300 ease-linear 
             dark:bg-boxdark lg:static lg:translate-x-0 
             ${open ? 'translate-x-0' : '-translate-x-full'}`}
-        // className={`
-        // bg-[#4F1DA0]
-        // text-white 
-        // h-screen w-[20.0625rem] 
-        // border-r-black shadow-md
-        // max-lg:hidden 
-        // ${!open &&'absolute top-0 bottom-0'}
-        // `}
         >
-                <div className="flex justify-between items-center px-6">
-                    <AppLogo />
+            <div className="flex justify-between items-center px-6">
+                <AppLogo />
 
-                    <MenuButton open={open} setAction={setSidebar} />
-                </div>
-                <div className="flex flex-col justify-between items-center gap-3 mt-3">
-                    {routes.map((item, index) => {
-                        return <Link to={item.path} className="text-white w-[100%] py-2 px-6 text-start font-[0.6875rem] hover:bg-[#A97DF3]">
-                            <div key={item.title} >
-                                {/* <FontAwesomeIcon icon="check-square" />
+                <MenuButton open={open} setAction={setSidebar} />
+            </div>
+            <div className="flex flex-col justify-between items-center gap-3 mt-3">
+                {routes.map((item, index) => {
+                    return <Link to={item.path} className="text-white w-[100%] py-2 px-6 text-start font-[0.6875rem] hover:bg-[#A97DF3]">
+                        <div key={item.title} >
+                            {/* <FontAwesomeIcon icon="check-square" />
                             <FontAwesomeIcon icon={['fab', 'apple']} /> */}
-                                {item.title}
-                            </div>
-                        </Link>
-                    })}
-                </div>
+                            {item.title}
+                        </div>
+                    </Link>
+                })}
+            </div>
             <div className="flex justify-between mx-[0.81rem] mb-2 mt-10 border-2 rounded-xl">
                 <div className="bg-[#723EC8] rounded-xl py-[0.81rem] px-[1.06rem] text-white ">
                     <span>Used Space:</span><br />
