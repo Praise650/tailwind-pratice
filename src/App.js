@@ -10,7 +10,6 @@ import Dashboard from './pages/dashboard';
 
 // components
 import Loader from './components/widgets/loader';
-import SignInResTest from './pages/SignInResTest';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
@@ -18,8 +17,7 @@ const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 function App() {
   return (
     <Routes>
-      {/* <Route index element={<SignIn />} /> */}
-      <Route index element={<SignInResTest />} />
+      <Route index element={<SignIn />} />
       <Route path="/auth/signup" element={<SignUp />} />
       <Route element={<DashboardLayout />}>
       <Route path='/dashboard' element={<Dashboard />} />
