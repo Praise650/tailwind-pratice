@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "@firebase/auth";
 import { auth } from '../firebase';
+import { FirestoreService, fService } from "./user_service";
 
 class CurrentUser {
     constructor(email, username, imageUrl, uid) {
@@ -22,22 +23,30 @@ class AuthService {
             resVal.failed = '';
             return resVal;
         } catch (error) {
-            // alert(error);
+            alert(error);
             // console.log(error);
             resVal.isSuccess = false;
             resVal.failed = error;
             return resVal;
         }
     }
-    async signup(email, password) {
+    async signup(email, password,userDataProps) {
+        const resVal = {isSuccess:false,failed:''};
         try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
-            new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
-            return true;
+            const newUser = new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
+            const firestore = new FirestoreService(newUser.uid);
+            firestore.creatUser(userDataProps)
+            console.log(newUser);
+            resVal.isSuccess = true;
+            resVal.failed = '';
+            return resVal;
         } catch (error) {
-            alert();
-            return false;
+            alert(error);
+            resVal.isSuccess = false;
+            resVal.failed = error;
+            return resVal;
         }
     }
 

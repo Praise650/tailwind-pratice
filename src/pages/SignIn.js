@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Loader from '../components/widgets/loader';
-import AuthInput from '../components/inputs/AuthInput';
 import { authService } from '../service/auth-service';
 import AuthLeftSide from '../components/uis/auth/AuthLeftSide';
+import LoginFormField from '../components/uis/auth/LoginFormField';
 
 function SignIn() {
     //   aProps = {
@@ -23,18 +23,17 @@ function SignIn() {
     const handleSignUp = async (event) => {
         event.preventDefault();
 
-        setLoading(true);
-        setError(null);
-
         const email = event.target.email.value;
         const password = event.target.password.value;
+        setLoading(true);
+        setError(null);
         const resVal = await authService.sigin(email, password);
         console.log(resVal);
         if (resVal.isSuccess === true) {
             setLoading(false);
             goto();
         } else {
-            // setError(resVal.failed);
+            setError(resVal.failed);
             setLoading(false);
         }
     }
@@ -42,47 +41,18 @@ function SignIn() {
     if (loading === true) return <Loader />
 
     return (
-        <div className='w-screen h-screen flex flex-row'>
+        <div className='w-screen min-h-screen flex flex-row'>
             {/* left */}
             <div className='bg-blue-700 px-11 py-10 w-[45%] max-md:hidden flex flex-col justify-between'>
                 <AuthLeftSide />
             </div>
             {/* left */}
-            <div className='bg-gray-600 w-screen h-screen flex-1'>
-                <div className='px-11 py-10 truncate'>
-                    Hello iits
+            <div className='w-full px-11 py-10 min-h-screen flex flex-col justify-center'>
+            <div className='bg-blue-50 rounded-lg p-4 shadow-lg w-full h-full flex justify-center items-center flex-col max-sm:bg-transparent max-sm:rounded-none max-sm:shadow-none'>
+                    <LoginFormField handleSignUp={handleSignUp} />
+                    {/* {error != null?  <div className='text-red-500'>{error}</div>:<></>} */}
                 </div>
             </div>
-            {/* <div className='bg-white px-11 py-10 w-full flex flex-col justify-between'>
-                <div className='bg-green-400 text-center truncate'>css color seperator</div>
-                <div className='bg-lime-100 flex flex-col items-center'>
-                    <div className='bg-blue-100 rounded-lg w-fit px-4 py-2'>
-                        <h1 className='text-black font-bold text-2xl mb-12 text-start'>Let's get started</h1>
-                        <form onSubmit={(e) => handleSignUp(e)}>
-                            <div className='grid grid-cols-2 gap-4 max-md:grid-cols-1'>
-                                <div className='col-span-2 max-md:grid-cols-1'>
-                                    <AuthInput name='email' placeholder="jondoe@gmail.com" labelText='Email' width='w-full' />
-                                </div>
-                                <div className='col-span-2'>
-                                    <AuthInput name='password' placeholder="*******" type="password" labelText='Password' width='w-full' />
-                                </div>
-                                <div className='col-span-2'>
-                                    <button className="text-white rounded-lg bg-blue-500 text-center py-3 w-full" type="submit">Get Started</button>
-                                </div>
-                                <div className='col-span-2 text-center w-full'>
-                                    <button
-                                        className='underline'
-                                        onClick={() => {
-                                            navigate('/auth/signup')
-                                        }}
-                                    >New here? SignUp</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div></div>
-            </div> */}
         </div>
     );
 
