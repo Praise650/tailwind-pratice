@@ -13,7 +13,7 @@ class CurrentUser {
 
 class AuthService {
     async sigin(email, password) {
-        const resVal = {isSuccess:false,failed:''};
+        const resVal = { isSuccess: false, failed: '' };
         try {
             let userCredential = await signInWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
@@ -24,21 +24,22 @@ class AuthService {
             return resVal;
         } catch (error) {
             alert(error);
-            // console.log(error);
             resVal.isSuccess = false;
             resVal.failed = error;
             return resVal;
         }
     }
-    async signup(email, password,userDataProps) {
-        const resVal = {isSuccess:false,failed:''};
+    
+    async signup(email, password, newData) {
+        const resVal = { isSuccess: false, failed: '' };
         try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
             let user = userCredential.user;
             const newUser = new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
             const firestore = new FirestoreService(newUser.uid);
-            firestore.creatUser(userDataProps)
-            console.log(newUser);
+            await firestore.creatUser(newData);
+            // console.log(newUser);
+            // console.log("User data props"+newData);
             resVal.isSuccess = true;
             resVal.failed = '';
             return resVal;

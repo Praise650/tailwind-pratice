@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard';
 
 // components
 import Loader from './components/widgets/loader';
+import ProfilePage from './pages/Profile';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
@@ -19,6 +20,7 @@ function App() {
     <Routes>
       <Route index element={<SignIn />} />
       <Route path="/auth/signup" element={<SignUp />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route element={<DashboardLayout />}>
       <Route path='/dashboard' element={<Dashboard />} />
         {routes.map(function (route, index) {

@@ -1,27 +1,15 @@
-import { setDoc, doc} from "@firebase/firestore";
+import { setDoc, doc } from "@firebase/firestore";
 import { database } from '../firebase';
 // import 'firebase/firestore';
 
 export class FirestoreService {
     constructor(userId) {
-        this.userDoc = doc(database, 'Users/'+userId);
+        this.userDoc = doc(database, 'WebUsers/' + userId);
     }
-    async creatUser({userData}) {
-        // const {fullName, email, country, state, phoneNumber} = userData;
+    async creatUser(newData) {
         const resVal = { isSuccess: false, failed: '' };
-        console.log("UserData to be pushed: " + userData)
-        // const userData = {
-        //     'fullName': fullName,
-        //     'email': email,
-        //     'country': country,
-        //     'state': state,
-        //     'phoneNumber': phoneNumber,
-        // };
         try {
-            await setDoc(this.userDoc, userData);
-            database.collection.doc()
-            // const newUser = new CurrentUser(user.email, user.displayName, user.photoURL, user.uid);
-            // console.log(newUser);
+            await setDoc(this.userDoc, newData);
             resVal.isSuccess = true;
             resVal.failed = '';
             return resVal;

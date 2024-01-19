@@ -12,7 +12,7 @@ function SignUp() {
     const [error, setError] = useState(null);
 
     const goto = () => {
-        navigate('/homepage');
+        navigate('/dashboard');
     }
 
     const handleSignUp = async (event) => {
@@ -33,11 +33,13 @@ function SignUp() {
             'phoneNumber': phoneNumber,
         };
 
+        // const newData = JSON.stringify(userDataProps);
+
         setLoading(true);
         setSuccess(false);
         setError(null);
 
-        const resVal = await authService.signup(email, password, {...userDataProps});
+        const resVal = await authService.signup(email, password, userDataProps);
         console.log(resVal);
         if (resVal.isSuccess === true) {
             setLoading(false);
