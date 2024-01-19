@@ -5,10 +5,10 @@ import SearchBar from './inputs/SearchBar';
 
 function ProfileComponent() {
     const items = [
-        'Profile',
-        'Settings',
-        'Report',
-        'Sign Out',]
+        {'title':'Profile', 'path':'/profile'},
+        {'title':'Settings', 'path':'/profile'},
+        {'title':'Report', 'path':'/profile'},
+        {'title':'Sign Out', 'path':'/auth/signup'},]
     const [dropdown, showDropdown] = useState(false);
     return (
         <div className='inline-flex justify-between items-center gap-4 lg:w-full'>
@@ -36,13 +36,10 @@ function ProfileComponent() {
                 <div className="flex flex-col justify-between items-start gap-3 ">
                     {items.map(function (item, index) {
                         return <Link key={item.title} to={item.path} className="w-full py-2 px-6 text-start font-[0.6875rem] hover:bg-[#A97DF3]">
-                            {item}
+                            {item.title}
                         </Link>
                     })}
                 </div>
-                <Link className="text-blue-300 hover:border-b-blue-400"
-                    to={"/auth/signup"} >
-                </Link>
             </div>
         </div>
     )
