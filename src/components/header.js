@@ -17,7 +17,9 @@ function Header({ open, setAction }) {
                     <img className="h-[40px] mr-3" src={logo} alt='Logo' />
                 </div>
                 {/* profile icon */}
-                <ProfileComponent />
+                {/* <div className=' w-full'> */}
+                    <ProfileComponent />
+                {/* </div> */}
                 {/* profile icon */}
             </div>
             {/* </div> */}

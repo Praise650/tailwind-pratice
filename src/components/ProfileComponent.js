@@ -31,7 +31,7 @@ function ProfileComponent() {
                 </button>
             </div>
             <div
-                className={`absolute bg-white text-black shadow-xl top-[31px] mt-4 right-0 w-52 ${!dropdown && 'hidden'} overflow-y-hidden`}
+                className={`absolute bg-white text-black shadow-xl top-[31px] mt-4 right-0 w-52 ${!dropdown && 'hidden'} z-50 overflow-y-hidden`}
             >
                 <div className="flex flex-col justify-between items-start gap-3 ">
                     {items.map(function (item, index) {
