@@ -1,0 +1,70 @@
+.wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 15px;
+  min-width: 50vh;
+  padding: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font: Riffic Free;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #160A36;
+  text-align: center;
+  transition: all 0.2s;
+  /* max-width: 50vh; */
+  width: 40vh;
+  height: 50px;
+}
+
+button:hover {
+  background-color: #160A36;
+}
+
+.iconbutton {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font: Riffic Free;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #160A36;
+  text-align: center;
+  transition: all 0.2s;
+  width: 10vh;
+  height: 50px;
+}
+
+icon-button:hover {
+  background-color: #160A36;
+}
+
+.circleStyles {
+  /* width: 500;
+  height: 150; */
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  size: 20px;
+  justify-content: center
+};
+
+@media all and (max-width:30em) {
+  button {
+    display: block;
+    margin: 0.2em auto;
+  }
+}
