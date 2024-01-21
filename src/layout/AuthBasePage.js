@@ -1,12 +1,13 @@
 // import logo from './logo.svg';
 import React, { useState } from 'react';
-import NavIconButton from './components/nav-icon-button';
-import ArrowLeft from "./images/prev.svg";
-import ArrowRight from "./images/next.svg";
+import NavIconButton from '../components/buttons/NavIconButton';
+import ArrowLeft from "../assets/svgs/prev.svg";
+import ArrowRight from "../assets/svgs/next.svg";
 import glass from '../css/transparent-glass.module.css';
 import '../css/AuthBasePage.css';
-import PersonalInfo from './pages/app-parts/personal-info';
-import WorkerStatus from './pages/app-parts/worker-status';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
+import AuthLeftSide from '../components/uis/auth/AuthLeftSide';
 
 function AuthBasePage() {
   const [page, setPage] = useState(0);
@@ -27,9 +28,13 @@ function AuthBasePage() {
   }
   const pageDisplay = () => {
     if (page === 0) {
-      return <PersonalInfo />
+      return <div className='flex justify-center'>
+        <div className='bg-blue-700 px-11 py-10 w-[45%] max-md:hidden flex flex-col justify-between'>
+          <AuthLeftSide />
+        </div>
+      </div>
     } else {
-      return <WorkerStatus />
+      return <SignUp />
     }
   }
 
@@ -38,17 +43,16 @@ function AuthBasePage() {
       <div>
         {formList.map((item, index) => (
           <div key={index} className='progress-bar'>
-            <div>{index +1}</div>
+            <div>{index + 1}</div>
           </div>
         ))}
       </div>);
   }
   return (
-    <div className="App">
+    <div className="bg-slate-400 h-screen flex justify-center">
       <div className={glass.wrapper}>
-        {progressBar()}
-        <div className='home-container'>
-          {/* <div class="item"><SplashImage/></div> */}
+        {/* {progressBar()} */}
+        <div className=''>
           {pageDisplay()}
           <div className='body'></div>
           <div className='footer'>

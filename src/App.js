@@ -11,6 +11,7 @@ import Dashboard from './pages/dashboard';
 // components
 import Loader from './components/widgets/loader';
 import ProfilePage from './pages/Profile';
+import AuthBasePage from './layout/AuthBasePage';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
@@ -18,7 +19,7 @@ const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 function App() {
   return (
     <Routes>
-      <Route index element={<SignIn />} />
+      <Route index element={<AuthBasePage />} />
       <Route path="/auth/signup" element={<SignUp />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route element={<DashboardLayout />}>
