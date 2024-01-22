@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import ReactStars from 'react-rating-star-with-type'
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
-function AuthLeftSide() {
+function AuthLeftSide({ navRight }) {
     const [star, setStar] = useState(5);
+    const isTablet = useMediaQuery(1024);
 
     const onChange = (nextValue) => {
         setStar(nextValue)
     }
 
     return (
-            <>
+        <>
             <div className='text-white'>
                 <div className='inline-flex gap-2 items-center uppercase'>
                     <img className='h-8' src='https://imgs.search.brave.com/UfU2B1IfoF337hpJj5HBSaLxrafVjdR-7osUmf2Z4ko/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9iY2Fz/c2V0Y2RuLmNvbS9h/c3NldHMvaW1hZ2Vz/L2ljb25zL2NvbW1v/bi1sYXJnZS9jb21t/b24tbGFyZ2UtYXJ0/d29yay5zdmc.svg' />
@@ -45,8 +47,12 @@ function AuthLeftSide() {
                         return <div className={`h-2 w-2 rounded-full ${index === 0 ? 'bg-white' : 'bg-gray-400'} m-2`}></div>
                     })}
                 </div>
+                {isTablet && <div className='flex flex-col items-end w-full'>
+                    <button onClick={() => navRight()}>Next</button>
+                </div>
+                }
             </div>
-            </>
+        </>
     );
 }
 

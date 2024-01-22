@@ -1,14 +1,17 @@
 import React from 'react';
 import AuthInput from '../../inputs/AuthInput';
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
-function LoginFormField({ handleSignUp }) {
+function LoginFormField({ handleSignUp, navLeft }) {
+    const isTablet = useMediaQuery(1024);
     let navigate = useNavigate();
     const goto = () => {
         navigate('/auth/signup');
     }
     return (
         <form onSubmit={(e) => handleSignUp(e)}>
+            
             <div className='inline-flex gap-2 items-center uppercase mb-5 w-full md:hidden'>
                 <img className='h-8' src='https://imgs.search.brave.com/UfU2B1IfoF337hpJj5HBSaLxrafVjdR-7osUmf2Z4ko/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9iY2Fz/c2V0Y2RuLmNvbS9h/c3NldHMvaW1hZ2Vz/L2ljb25zL2NvbW1v/bi1sYXJnZS9jb21t/b24tbGFyZ2UtYXJ0/d29yay5zdmc.svg' alt='app logo'/>
                 <span className='font-black font-mono text-xl'>StartGlobal</span>
@@ -32,9 +35,18 @@ function LoginFormField({ handleSignUp }) {
                         onClick={() => { goto() }}
                     >New here? SignUp</button>
                 </div>
+                {
+            isTablet === false && 
+            <div className='col-span-2 text-center w-full'>
+                    <button
+                        className='underline'
+                        onClick={() => { navLeft() }}
+                    >Go back</button>
+                </div>
+            }
             </div>
         </form>
     )
 }
 
-export default LoginFormField
+export default LoginFormField;

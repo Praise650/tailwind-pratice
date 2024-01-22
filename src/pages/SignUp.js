@@ -54,7 +54,7 @@ function SignUp() {
     return (
         <div className='w-screen min-h-screen flex flex-row'>
             {/* left */}
-            <div className='bg-blue-700 px-11 py-10 w-[45%] max-md:hidden flex flex-col justify-between'>
+            <div className='bg-blue-700 px-11 py-10 w-[45%] flex flex-col justify-between'>
                 <AuthLeftSide />
             </div>
             {/* left */}

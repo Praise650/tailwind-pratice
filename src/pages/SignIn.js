@@ -6,11 +6,6 @@ import AuthLeftSide from '../components/uis/auth/AuthLeftSide';
 import LoginFormField from '../components/uis/auth/LoginFormField';
 
 function SignIn() {
-    //   aProps = {
-    //     name: 'email',
-    //     type: 'text',
-    //     placeholder: 'Enter email'
-    // };
 
     let navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -43,13 +38,13 @@ function SignIn() {
     return (
         <div className='w-screen min-h-screen flex flex-row'>
             {/* left */}
-            <div className='bg-blue-700 px-11 py-10 w-[45%] max-md:hidden flex flex-col justify-between'>
+            <div className='bg-blue-700 px-11 py-10 w-[45%] flex flex-col justify-between'>
                 <AuthLeftSide />
             </div>
             {/* left */}
             <div className='w-full px-11 py-10 min-h-screen flex flex-col justify-center'>
             <div className='bg-blue-50 rounded-lg p-4 shadow-lg w-full h-full flex justify-center items-center flex-col max-sm:bg-transparent max-sm:rounded-none max-sm:shadow-none'>
-                    <LoginFormField handleSignUp={handleSignUp} />
+                    <LoginFormField handleSignUp={handleSignUp}  />
                     {/* {error != null?  <div className='text-red-500'>{error}</div>:<></>} */}
                 </div>
             </div>
@@ -57,9 +52,6 @@ function SignIn() {
     );
 
     {/* <div className='shadow-lg shadow-slate-400 p-6 m-3 flex flex-col gap-4 justify-center items-center'>
-                    <h3 className="header">Login to your Account</h3>
-                    <AuthInput name='email' placeholder="jondoe@gmail.com" />
-                    <AuthInput name='password' placeholder="*******" type="password" />
                     {error && (
                         <div className='footer' style={{ color: 'red' }}>{error}</div>
                     )}
