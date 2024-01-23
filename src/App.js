@@ -11,15 +11,20 @@ import Dashboard from './pages/dashboard';
 // components
 import Loader from './components/widgets/loader';
 import ProfilePage from './pages/Profile';
-import AuthBasePage from './layout/AuthBasePage';
+// import AuthBasePage from './layout/AuthBasePage';
+import useMediaQuery from './hooks/useMediaQuery';
+import AuthMobileView from './components/uis/auth/AuthMobileView';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
 
 function App() {
+  const isTablet = useMediaQuery(1024);
   return (
     <Routes>
-      <Route index element={<AuthBasePage />} />
+      <Route index element={
+      isTablet ? <AuthMobileView isTablet={isTablet} />
+      : <SignIn />} />
       <Route path="/auth/signup" element={<SignUp />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route element={<DashboardLayout />}>
