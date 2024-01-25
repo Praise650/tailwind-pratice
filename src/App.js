@@ -16,10 +16,11 @@ import useMediaQuery from './hooks/useMediaQuery';
 import AuthMobileView from './components/uis/auth/AuthMobileView';
 
 // layouts
-const DashboardLayout = lazy(() => import('./layout/dashboard-layout'));
+const DashboardLayout = lazy(() => import('./layout/DashboardLayout'));
 
 function App() {
-  const isTablet = useMediaQuery(1024);
+  // const isTablet = useMediaQuery(1024);
+  const isTablet = useMediaQuery((width) => width < 1024);
   return (
     <Routes>
       <Route index element={
