@@ -8,6 +8,7 @@ import HorizontalCardList from '../components/uis/employees/horizontal_card_widg
 import Loader from '../components/widgets/loader';
 import ErrorWidget from '../components/uis/ErrorWidget';
 import { assetsService } from '../service/asset_service';
+import FAB from '../components/buttons/FAB';
 
 function Employees() {
   const [loading, setLoading] = useState(false);
@@ -68,14 +69,7 @@ function Employees() {
       </div>
 
       {/* fab */}
-      <button onClick={() => setModalState(!openModal)}>
-        <div className='absolute right-0 bottom-0 rounded-full h-10 w-10 m-10 shadow-2xl bg-blue-400 flex items-center justify-center'>
-
-          <span className='text-white font-bold text-lg'>
-            <img src={assetsService.add} alt='add new user' />
-          </span>
-        </div>
-      </button>
+      <FAB />
       {/* fab */}
       {openModal && <AddNewUser setOpenModal={setModalState} />}
     </div>
