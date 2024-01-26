@@ -12,8 +12,8 @@ function LoginFormField({ handleSignUp, navLeft, nextPage }) {
     return (
         <form onSubmit={(e) => handleSignUp(e)}>
             {
-                isTablet &&
-                <div className='text-end w-full'>
+                // isTablet &&
+                <div className='text-end w-full lg:hidden'>
                     <button
                         className='underline'
                         onClick={() => { nextPage() }}
@@ -39,12 +39,16 @@ function LoginFormField({ handleSignUp, navLeft, nextPage }) {
                     <button className="text-white rounded-lg bg-blue-500 text-center py-3 w-full" type="submit">Get Started</button>
                 </div>
                 {
-                    isTablet === true ? <div className='col-span-2 text-center w-full'>
+                    // isTablet === true ? 
+                    <div className='col-span-2 text-center w-full lg:hidden'>
                         <button
                             className='underline'
                             onClick={() => { navLeft() }}
                         >Go back</button>
-                    </div> : <div className='col-span-2 text-center w-full'>
+                    </div> }
+                    {
+                    // : 
+                    <div className='col-span-2 text-center w-full max-lg:hidden'>
                         <button
                             className='underline'
                             onClick={() => { goto() }}

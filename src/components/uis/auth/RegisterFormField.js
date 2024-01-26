@@ -12,8 +12,8 @@ function RegisterFormField({ handleSignUp, back }) {
     return (
         <form onSubmit={(e) => handleSignUp(e)}>
             {
-                isTablet &&
-                <div className='col-span-2 text-start w-full'>
+                // isTablet &&
+                <div className='col-span-2 text-start w-full lg:hidden'>
                     <button
                         className='underline'
                         onClick={() => { back() }}
@@ -53,7 +53,8 @@ function RegisterFormField({ handleSignUp, back }) {
                     <button className="text-white rounded-lg bg-blue-500 text-center py-3 w-full" type="submit">Get Started</button>
                 </div>
                 {
-                    isTablet === false && <div className='col-span-2 text-center w-full'>
+                    // isTablet === false && 
+                    <div className='col-span-2 text-center w-full max-lg:hidden'>
                         <button
                             className='underline'
                             onClick={() => { goto() }}
