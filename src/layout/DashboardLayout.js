@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import SideBar from '../components/SideBar';
-import Header from '../components/header';
+import Header from '../components/HeaderBar';
 import { Outlet } from 'react-router-dom';
 
 function DashboardLayout() {

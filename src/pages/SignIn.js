@@ -38,9 +38,7 @@ function SignIn() {
     return (
         <div className='w-screen min-h-screen flex flex-row'>
             {/* left */}
-            <div className='bg-blue-700 px-11 py-10 w-[45%] flex flex-col justify-between'>
                 <AuthLeftSide />
-            </div>
             {/* left */}
             <div className='w-full px-11 py-10 min-h-screen flex flex-col justify-center'>
             <div className='bg-blue-50 rounded-lg p-4 shadow-lg w-full h-full flex justify-center items-center flex-col max-sm:bg-transparent max-sm:rounded-none max-sm:shadow-none'>

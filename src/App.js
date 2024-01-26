@@ -11,25 +11,22 @@ import Dashboard from './pages/dashboard';
 // components
 import Loader from './components/widgets/loader';
 import ProfilePage from './pages/Profile';
-// import AuthBasePage from './layout/AuthBasePage';
-import useMediaQuery from './hooks/useMediaQuery';
-import AuthMobileView from './components/uis/auth/AuthMobileView';
+import AuthBasePage from './layout/AuthBasePage';
+import RegisterBasePage from './layout/RegisterBasePage';
 
 // layouts
 const DashboardLayout = lazy(() => import('./layout/DashboardLayout'));
 
 function App() {
-  // const isTablet = useMediaQuery(1024);
-  const isTablet = useMediaQuery((width) => width < 1024);
+  const isLargeScreen = window.innerWidth > 1024; // You can adjust the breakpoint as needed
+
   return (
     <Routes>
-      <Route index element={
-      isTablet ? <AuthMobileView isTablet={isTablet} />
-      : <SignIn />} />
-      <Route path="/auth/signup" element={<SignUp />} />
+      <Route index element={<AuthBasePage />} />
+      <Route path="/auth/signup" element={<RegisterBasePage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route element={<DashboardLayout />}>
-      <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         {routes.map(function (route, index) {
           const { path, page: Component } = route;
           return (<Route

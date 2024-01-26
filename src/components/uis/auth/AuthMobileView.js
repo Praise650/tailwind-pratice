@@ -90,9 +90,7 @@ function AuthMobileView() {
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <div className='bg-blue-700 h-screen px-11 py-10 w-full flex flex-col justify-between'>
-        <AuthLeftSide navRight={handleNexAction} />
-      </div>
+      return <AuthLeftSide navRight={handleNexAction} />
     } else if (page === 1) {
       return <div className='h-screen p-6'>
         <LoginFormField navLeft={handlePrevAction} handleSignUp={handleSignIn} nextPage={handleNexAction} />
