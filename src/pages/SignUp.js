@@ -52,20 +52,12 @@ function SignUp() {
 
     if (loading === true) return <Loader />
     return (
-        <div className='w-screen min-h-screen flex flex-row'>
+        <div className='w-screen h-screen flex flex-row overflow-hidden'>
             {/* left */}
                 <AuthLeftSide />
             {/* left */}
-            <div className='w-full px-11 py-10 min-h-screen flex flex-col justify-between'>
-                {/* css color seperator */}
-                <div></div>
-                {/* css color seperator */}
-                <div className='bg-blue-50 rounded-lg p-4 shadow-lg w-full h-full flex justify-center items-center flex-col max-sm:bg-transparent max-sm:rounded-none max-sm:shadow-none'>
+            <div className='w-full px-11 py-10 h-screen flex flex-col justify-between overflow-auto'>
                     <RegisterFormField handleSignUp={handleSignUp} />
-                </div>
-                {/* spacer */}
-                <div></div>
-                {/* spacer */}
             </div>
         </div>
     );

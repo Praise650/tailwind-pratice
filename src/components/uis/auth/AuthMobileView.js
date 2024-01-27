@@ -92,22 +92,20 @@ function AuthMobileView() {
     if (page === 0) {
       return <AuthLeftSide navRight={handleNexAction} />
     } else if (page === 1) {
-      return <div className='h-screen p-6'>
+      return <div><br /><br />
         <LoginFormField navLeft={handlePrevAction} handleSignUp={handleSignIn} nextPage={handleNexAction} />
       </div>
     } else {
-      return <div className='h-screen p-6'>
-        <RegisterFormField back={handlePrevAction} handleSignUp={handleSignUp} />
-      </div>
+      return <RegisterFormField back={handlePrevAction} handleSignUp={handleSignUp} />
     }
   }
 
   const progressBar = () => {
     return (
-      <div>
+      <div className='h-10 bg-slate-700 px-5 flex justify-between'>
         {formList.map((item, index) => (
-          <div key={index} className='progress-bar'>
-            <div>{index + 1}</div>
+          <div key={index} className={`${index === 1 ? 'text-red-400' : 'text-blue-500'} text-xl`}>
+            <h4 className={`${index === 0 ? "text-red-400" : 'text-blue-500'}text-xl`}>index + 1</h4>
           </div>
         ))}
       </div>
@@ -117,7 +115,7 @@ function AuthMobileView() {
   if (loading === true) return <Loader />
 
   return (
-    <div className=''>
+    <div>
       {/* {progressBar()} */}
       {pageDisplay()}
     </div>

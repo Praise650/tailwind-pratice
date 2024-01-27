@@ -36,13 +36,13 @@ function SignIn() {
     if (loading === true) return <Loader />
 
     return (
-        <div className='w-screen min-h-screen flex flex-row'>
+        <div className='w-screen h-screen flex flex-row'>
             {/* left */}
-                <AuthLeftSide />
+            <AuthLeftSide />
             {/* left */}
-            <div className='w-full px-11 py-10 min-h-screen flex flex-col justify-center'>
-            <div className='bg-blue-50 rounded-lg p-4 shadow-lg w-full h-full flex justify-center items-center flex-col max-sm:bg-transparent max-sm:rounded-none max-sm:shadow-none'>
-                    <LoginFormField handleSignUp={handleSignUp}  />
+            <div className='w-full px-11 py-10 h-screen flex flex-col justify-center'>
+                <div className='px-10'>
+                    <LoginFormField handleSignUp={handleSignUp} />
                     {/* {error != null?  <div className='text-red-500'>{error}</div>:<></>} */}
                 </div>
             </div>
