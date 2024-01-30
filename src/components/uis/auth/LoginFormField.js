@@ -12,6 +12,7 @@ function LoginFormField({ handleSignUp, navLeft, nextPage }) {
             {
                 <div className='text-end w-full lg:hidden'>
                     <button
+                    type='button'
                         className='underline'
                         onClick={() => { nextPage() }}
                     >Sign Up</button>
@@ -48,6 +49,7 @@ function LoginFormField({ handleSignUp, navLeft, nextPage }) {
                     // : 
                     <div className='col-span-2 text-center w-full max-lg:hidden'>
                         <button
+                        type='button'
                             className='underline'
                             onClick={() => { goto() }}
                         >New here? SignUp</button>

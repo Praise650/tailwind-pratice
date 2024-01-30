@@ -21,15 +21,31 @@ function Employees() {
   let currentPage = 0;
 
   useEffect(() => {
+    const fetchData = async (page) => {
+      setLoading(true);
+      try {
+        const resData = await employeesService.getEmployeeList(apiUrls.getEmployees);
+        // const startIndex = page * itemsPerPage;
+        // const endIndex = startIndex + itemsPerPage;
+        // let users = resData.data.splice(startIndex, endIndex);
+        setList(resData);
+        setLoading(false);
+      } catch (error) {
+        // alert('Error fetching data:', error);
+        console.error('Error fetching data:', error);
+        setLoading(false);
+        setError(true);
+      }
+    };
     fetchData(currentPage);
-  }, [currentPage]);
+  }, []);
 
   const fetchData = async (page) => {
     setLoading(true);
     try {
       const resData = await employeesService.getEmployeeList(apiUrls.getEmployees);
-      const startIndex = page * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
+      // const startIndex = page * itemsPerPage;
+      // const endIndex = startIndex + itemsPerPage;
       // let users = resData.data.splice(startIndex, endIndex);
       setList(resData);
       setLoading(false);
@@ -53,8 +69,9 @@ function Employees() {
 
   if (loading === true) return <Loader />;
 
-  if (error === true) return <ErrorWidget />
+  if (error === true) return <ErrorWidget refresh={()=>fetchData(currentPage)} />
 
+  console.log("page rerendered");
   return (
     <div>
       <h1 className='font-bold text-3xl mb-4'>Employees</h1>

@@ -12,6 +12,7 @@ function RegisterFormField({ handleSignUp, back }) {
             {
                 <div className='col-span-2 text-start w-full lg:hidden'>
                     <button
+                    type='button'
                         className='underline'
                         onClick={() => { back() }}
                     >Go back</button>
@@ -55,6 +56,7 @@ function RegisterFormField({ handleSignUp, back }) {
                     // isTablet === false && 
                     <div className='col-span-2 text-center w-full max-lg:hidden'>
                         <button
+                        type='button'
                             className='underline'
                             onClick={() => { goto() }}
                         >Already a Member? SignIn</button>
