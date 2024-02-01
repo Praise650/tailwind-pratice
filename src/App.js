@@ -22,22 +22,24 @@ function App() {
 
   return (
     <Routes>
-      <Route index element={<AuthBasePage />} />
-      <Route path="/auth/signup" element={<RegisterBasePage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route element={<DashboardLayout />}>
-        <Route path='/dashboard' element={<Dashboard />} />
-        {routes.map(function (route, index) {
-          const { path, page: Component } = route;
-          return (<Route
-            key={index}
-            path={path}
-            element={
-              <Suspense fallback={<Loader />}>
-                <Component />
-              </Suspense>
-            } />)
-        })}
+      <Route fallback={<Loader />}>
+        <Route index element={<AuthBasePage />} />
+        <Route path="/auth/signup" element={<RegisterBasePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+          {routes.map(function (route, index) {
+            const { path, page: Component } = route;
+            return (<Route
+              key={index}
+              path={path}
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Component />
+                </Suspense>
+              } />)
+          })}
+        </Route>
       </Route>
     </Routes>
   );
